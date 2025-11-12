@@ -43,21 +43,7 @@ public class Algebra {
 	// Returns x1 - x2
 	public static int minus(int x1, int x2) {
 		// Replace the following statement with your code
-		if(x1 < 0 & x2 < 0){
-
-			x1 =  plus( x1, -1 *x2);
-
-		}else if (x2<0){
-
-			x1 =  plus( x1, -1*x2);
-
-		}else{
-
-			x1 = plus(x1, x2);
-			
-		}
-
-		return x1;
+		 return plus(x1, -x2);
 	}
 
 	// Returns x1 * x2
