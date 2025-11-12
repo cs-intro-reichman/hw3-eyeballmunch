@@ -45,10 +45,16 @@ public class Algebra {
 		// Replace the following statement with your code
 		if(x1 < 0 & x2 < 0){
 
-			x1 =  plus(x1, Math.abs(x2));
+			x1 =  plus( x1, -1 *x2);
+
+		}else if (x2<0){
+
+			x1 =  plus( x1, -1*x2);
 
 		}else{
+
 			x1 = plus(x1, x2);
+			
 		}
 
 		return x1;
