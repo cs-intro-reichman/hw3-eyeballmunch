@@ -27,7 +27,7 @@ public class Algebra {
 	public static int plus(int x1, int x2) {
 		// Replace the following statement with your code
 
-		if ((x1 <0 & x2 <0)|| (x1 < 0 & x2 > 0) ){
+		if ((x1 <0 & x2 <0)|| (x1 < 0 ) || (x2 < 0)){
 			for (int i = 0; i < (Math.abs(x2)); i++){
 				x1--;
 			}
