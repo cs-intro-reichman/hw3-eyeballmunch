@@ -28,12 +28,11 @@ public class Algebra {
 		// Replace the following statement with your code
 
 		if ((x1 <0 & x2 <0)|| (x1 < 0 & x2 > 0) ){
-			for (int i = 0; i < (x2); i++){
+			for (int i = 0; i < (Math.abs(x2)); i++){
 				x1--;
 			}
-		}
-		else {
-			for (int i = 0; i < (x2); i++){
+		}else {
+			for (int i = 0; i < (Math.abs(x2)); i++){
 				x1++;
 			}
 		}
