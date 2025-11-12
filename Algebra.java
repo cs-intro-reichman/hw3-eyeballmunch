@@ -37,7 +37,6 @@ public class Algebra {
 			}
 		}
 			
-
 		return x1;
 	}
 
@@ -45,28 +44,32 @@ public class Algebra {
 	public static int minus(int x1, int x2) {
 		// Replace the following statement with your code
 		if(x1 < 0 & x2 < 0){
-			plus(x1, Math.abs(x2));
+
+			x1 =  plus(x1, Math.abs(x2));
+
 		}else{
-			plus(x1, x2);
+			x1 = plus(x1, x2);
 		}
 
-		return 0;
+		return x1;
 	}
 
 	// Returns x1 * x2
 	public static int times(int x1, int x2) {
 		// Replace the following statement with your code
 		if (x1 < 0 & x2 < 0) {
-			for (int i = 0; i < (x2); i++){
-				x1 = minus(x1,x2);
-			}
-		}else{
-			for (int i = 0; i < (x2); i++){
-				x1 = plus(x1,x2);
+			for (int i = 0; i < x2; i++){
+				x1 = plus(-1*x1,-1*x2);
 			}
 
+		}else if(x1 < 0 || x2 < 0 ){
+			for (int i = 0; i < (x2); i++){
+				x1 = -1*plus(Math.abs(x1),Math.abs(x2));
+			}
+		}else{
+			x1 = plus(x1, x2);
 		}
-		
+
 
 		return x1;
 	}
