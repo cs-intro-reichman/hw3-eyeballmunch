@@ -57,7 +57,7 @@ public class Algebra {
 		int absX2 = Math.abs(x2);
 		int result = 0;  
 
-		if (x1 < 0 && x2 < 0) {
+		if (x1 < 0 & x2 < 0) {
 			for (int i = 0; i < absX2; i++) {
 				result = plus(result, absX1);  
 			}
@@ -89,13 +89,11 @@ public class Algebra {
 		int result = 1;  
 		int absX = Math.abs(x);
 
-		
 		for (int i = 0; i < n; i++) {
 			result = times(result, absX);  
 		}
 
-		
-		if (x < 0 && n % 2 != 0) {
+		if (x < 0 & n % 2 != 0) {
 			result = -result;
 		}
 		return result;
@@ -104,7 +102,24 @@ public class Algebra {
 	// Returns the integer part of x1 / x2 
 	public static int div(int x1, int x2) {
 		// Replace the following statement with your code
-		return 0;
+		if (x2 == 0) {
+        	return 0;
+    	}
+		int absX1 = Math.abs(x1);
+    	int absX2 = Math.abs(x2);
+
+   		int result = 0;
+
+		while(absX1 >= absX2){
+			absX1 = minus(absX1, absX2);
+			result +=1;
+		}
+
+		if ((x1 < 0 & x2 > 0) || (x1 > 0 & x2 < 0)) {
+       		result = -result;
+    	}
+
+		return result;
 	}
 
 	// Returns x1 % x2
