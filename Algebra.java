@@ -175,15 +175,7 @@ public class Algebra {
 			}
 		}
 
-		// Casting result to int before the check
-    	int resultInt = (int) result;
-
-    	// Final adjustment: Check if the next square is greater than x
-    	if (times(resultInt + 1, resultInt + 1) > x) {
-        	resultInt--; // Decrease result if next square is greater than x
-    	}
-
-    	return resultInt;  // Return the integer part of the square root
+    	return (int) result;  // Return the integer part of the square root
 
 		
 	}
