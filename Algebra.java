@@ -149,7 +149,7 @@ public class Algebra {
 		// Replace the following statement with your code
 		
 		if (x == 0 || x == 1) {
-       		return x;
+       		return 0;
     	}
 
 		double low = 0;
@@ -175,6 +175,16 @@ public class Algebra {
 			}
 		}
 
-		return (int) result; 
+		// Casting result to int before the check
+    	int resultInt = (int) result;
+
+    	// Final adjustment: Check if the next square is greater than x
+    	if (times(resultInt + 1, resultInt + 1) > x) {
+        	resultInt--; // Decrease result if next square is greater than x
+    	}
+
+    	return resultInt;  // Return the integer part of the square root
+
+		
 	}
 }	  	  
