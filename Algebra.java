@@ -124,8 +124,24 @@ public class Algebra {
 
 	// Returns x1 % x2
 	public static int mod(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
+		
+		if (x2 == 0) {
+        throw new ArithmeticException("Division by zero is undefined");
+    	}
+
+		int absX1 = Math.abs(x1);
+		int absX2 = Math.abs(x2);
+
+		while (absX1 >= absX2) {
+			absX1 = minus(absX1, absX2);  
+		}
+
+		if (x1 < 0) {
+			absX1 = minus(0, absX1); 
+		}
+
+		return absX1;
+
 	}	
 
 	// Returns the integer part of sqrt(x) 
