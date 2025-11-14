@@ -147,6 +147,34 @@ public class Algebra {
 	// Returns the integer part of sqrt(x) 
 	public static int sqrt(int x) {
 		// Replace the following statement with your code
-		return 0;
-	}	  	  
-}
+		
+		if (x == 0 || x == 1) {
+       		return x;
+    	}
+
+		double low = 0;
+		double high = x;
+		double mid;
+		double epsilon = 0.0001; 
+		double result = 0; 
+
+		
+		while ((high - low) > epsilon) {
+
+			mid = (low + high) / 2;
+			int midInt = (int) mid; 
+			int midSquared = times(midInt, midInt); 
+
+			if (Math.abs(midSquared - x) <= epsilon) {
+				result = midInt; 
+				break; 
+			} else if (midSquared < x) {
+				low = mid;  
+			} else {
+				high = mid; 
+			}
+		}
+
+		return (int) result; 
+	}
+}	  	  
