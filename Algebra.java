@@ -49,21 +49,34 @@ public class Algebra {
 	// Returns x1 * x2
 	public static int times(int x1, int x2) {
 		// Replace the following statement with your code
-		if (x1 < 0 & x2 < 0) {
-			for (int i = 0; i < x2; i++){
-				x1 = plus(-1*x1,-1*x2);
-			}
+		if (x1 == 0 || x2 == 0) {
+        return 0;
+    	}
 
-		}else if(x1 < 0 || x2 < 0 ){
-			for (int i = 0; i < (x2); i++){
-				x1 = -1*plus(Math.abs(x1),Math.abs(x2));
+		int absX1 = Math.abs(x1);
+		int absX2 = Math.abs(x2);
+		int result = 0;  
+
+		// Both negative
+		if (x1 < 0 && x2 < 0) {
+			for (int i = 0; i < absX2; i++) {
+				result = plus(result, absX1);  
 			}
-		}else{
-			x1 = plus(x1, x2);
+		} 
+		// One negative
+		else if (x1 < 0 || x2 < 0) {
+			for (int i = 0; i < absX2; i++) {
+				result = plus(result, absX1);  
+			}
+			result *= -1;  // make the result negative
+		} else {
+			for (int i = 0; i < absX2; i++) {
+				result = plus(result, absX1);  
+			}
 		}
 
 
-		return x1;
+		return result;
 	}
 
 	// Returns x^n (for n >= 0)
