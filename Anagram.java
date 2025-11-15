@@ -53,7 +53,7 @@ public class Anagram {
 	// as is. For example, the string "What? No way!" becomes "whatnoway"
 	public static String preProcess(String str) {
 		// Replace the following statement with your code
-		String badchars = "@?! ";
+		String badchars = "@?!";
 		String result = "";
 
 		String lowerCase = str.toLowerCase(); 
