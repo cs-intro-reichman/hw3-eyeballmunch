@@ -26,42 +26,157 @@ public class Algebra {
 	// Returns x1 + x2
 	public static int plus(int x1, int x2) {
 		// Replace the following statement with your code
-		return 0;
+
+		if ((x1 <0 & x2 <0)|| (x2 < 0)){
+			for (int i = 0; i < (Math.abs(x2)); i++){
+				x1--;
+			}
+		}else {
+			for (int i = 0; i < (Math.abs(x2)); i++){
+				x1++;
+			}
+		}
+			
+		return x1;
 	}
 
 	// Returns x1 - x2
 	public static int minus(int x1, int x2) {
 		// Replace the following statement with your code
-		return 0;
+		 return plus(x1, -x2);
 	}
 
 	// Returns x1 * x2
 	public static int times(int x1, int x2) {
 		// Replace the following statement with your code
-		return 0;
+		if (x1 == 0 || x2 == 0) {
+        	return 0;
+    	}
+
+		int absX1 = Math.abs(x1);
+		int absX2 = Math.abs(x2);
+		int result = 0;  
+
+		if (x1 < 0 & x2 < 0) {
+			for (int i = 0; i < absX2; i++) {
+				result = plus(result, absX1);  
+			}
+		} else if (x1 < 0 || x2 < 0) {
+			for (int i = 0; i < absX2; i++) {
+				result = plus(result, absX1);  
+			}
+			result *= -1;  
+		} else {
+			for (int i = 0; i < absX2; i++) {
+				result = plus(result, absX1);  
+			}
+		}
+
+		return result;
 	}
 
 	// Returns x^n (for n >= 0)
 	public static int pow(int x, int n) {
 		// Replace the following statement with your code
-		return 0;
+		if (n == 0) {
+        	return 1;  
+   		}
+
+		if (x == 0) {
+			return 0;  
+		}
+
+		int result = 1;  
+		int absX = Math.abs(x);
+
+		for (int i = 0; i < n; i++) {
+			result = times(result, absX);  
+		}
+
+		if (x < 0 & n % 2 != 0) {
+			result = -result;
+		}
+		return result;
 	}
 
 	// Returns the integer part of x1 / x2 
 	public static int div(int x1, int x2) {
 		// Replace the following statement with your code
-		return 0;
+		if (x2 == 0) {
+        	return 0;
+    	}
+		int absX1 = Math.abs(x1);
+    	int absX2 = Math.abs(x2);
+
+   		int result = 0;
+
+		while(absX1 >= absX2){
+			absX1 = minus(absX1, absX2);
+			result +=1;
+		}
+
+		if ((x1 < 0 & x2 > 0) || (x1 > 0 & x2 < 0)) {
+       		result = -result;
+    	}
+
+		return result;
 	}
 
 	// Returns x1 % x2
 	public static int mod(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
+		
+		if (x2 == 0) {
+        throw new ArithmeticException("Division by zero is undefined");
+    	}
+
+		int absX1 = Math.abs(x1);
+		int absX2 = Math.abs(x2);
+
+		while (absX1 >= absX2) {
+			absX1 = minus(absX1, absX2);  
+		}
+
+		if (x1 < 0) {
+			absX1 = minus(0, absX1); 
+		}
+
+		return absX1;
+
 	}	
 
 	// Returns the integer part of sqrt(x) 
 	public static int sqrt(int x) {
 		// Replace the following statement with your code
-		return 0;
-	}	  	  
-}
+		
+		if (x == 0 || x == 1) {
+       		return 0;
+    	}
+
+		double low = 0;
+		double high = x;
+		double mid;
+		double epsilon = 0.0001; 
+		double result = 0; 
+
+		
+		while ((high - low) > epsilon) {
+
+			mid = (low + high) / 2;
+			int midInt = (int) mid; 
+			int midSquared = times(midInt, midInt); 
+
+			if (Math.abs(midSquared - x) <= epsilon) {
+				result = midInt; 
+				break; 
+			} else if (midSquared < x) {
+				low = mid;  
+			} else {
+				high = mid; 
+			}
+		}
+
+    	return (int) result;  // Return the integer part of the square root
+
+		
+	}
+}	  	  
