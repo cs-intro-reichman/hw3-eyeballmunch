@@ -47,23 +47,9 @@ public class LoanCalc {
 	// Side effect: modifies the class variable iterationCounter.
     public static double bruteForceSolver(double loan, double rate, int n, double epsilon) {
 		// Replace the following statement with your code
-		double payment = 0.0; // Starting with a payment of 0
-        double stepSize = 0.01; // Define a small step size for the payment increase
-
-        // We continue until the ending balance is close enough to 0
-        while (true) {
-            iterationCounter++; // Track the number of iterations
-
-            double balance = endBalance(loan, rate, n, payment);
-
-            // Check if the balance is close enough to zero
-            if (Math.abs(balance) <= epsilon) {
-                return payment;  // Return the current payment if it's close enough to zero
-            }
-
-            // Increment the payment by a small step
-            payment += stepSize;
-        }
+		
+        return 0;
+		
     }
     
     // Uses bisection search to compute an approximation of the periodical payment 
