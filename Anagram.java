@@ -64,6 +64,8 @@ public class Anagram {
 
 			if (c >= 'a' && c <= 'z') {
 				result = result + c;
+			}else if (c == ' ') {
+				result = result + c;
 			}
 		} 
 	 	return result;
