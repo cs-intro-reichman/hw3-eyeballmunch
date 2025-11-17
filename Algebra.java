@@ -152,31 +152,16 @@ public class Algebra {
        		return 0;
     	}
 
-		double low = 0;
-		double high = x;
-		double mid;
-		double epsilon = 0.0001; 
-		double result = 0; 
+		int i = 0;
 
-		
-		while ((high - low) > epsilon) {
-
-			mid = (low + high) / 2;
-			int midInt = (int) mid; 
-			int midSquared = times(midInt, midInt); 
-
-			if (Math.abs(midSquared - x) <= epsilon) {
-				result = midInt; 
-				break; 
-			} else if (midSquared < x) {
-				low = mid;  
-			} else {
-				high = mid; 
+		while (true) {
+			int sq = times(i, i);
+			if (sq > x) {
+				return minus(i, 1);
 			}
+			i = plus(i, 1);
 		}
 
-    	return (int) result;  // Return the integer part of the square root
-
-		
+			
 	}
 }	  	  
