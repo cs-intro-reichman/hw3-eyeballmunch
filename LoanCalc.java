@@ -29,12 +29,11 @@ public class LoanCalc {
 	// interest rate (as a percentage), the number of periods (n), and the periodical payment.
 	private static double endBalance(double loan, double rate, int n, double payment) {	
 		double balance = loan;
-    	double monthlyRate = rate / 100;  // Convert percentage to decimal (annual interest rate)
-    
-    	// Loop over each payment period
+    	double annualRate = rate / 100;  
+
+    	
     	for (int i = 0; i < n; i++) {
-			balance *= (1 + monthlyRate);  // Apply interest to the balance
-			balance -= payment;            // Subtract the payment from the balance
+			balance = (balance - payment) * (1 + annualRate);         
     	}
     
     	return balance;
@@ -48,25 +47,16 @@ public class LoanCalc {
     public static double bruteForceSolver(double loan, double rate, int n, double epsilon) {
 		// Replace the following statement with your code
 
-		/* 
-		  double payment = loan / n;  
+		double payment = loan / n;  // Initial guess (no interest considered)
 		iterationCounter = 0;
 
-		while (true) {
+		// Keep increasing payment until ending balance becomes non-positive
+		while (endBalance(loan, rate, n, payment) > 0) {
 			iterationCounter++;
-			double balance = endBalance(loan, rate, n, payment);
-			
-			if (Math.abs(balance) < epsilon) {
-				break;
-			}
-			
 			payment += epsilon;
 		}
-		return payment;
-		  
-		*/
 		
-		return 0;
+		return payment;
     }
     
     // Uses bisection search to compute an approximation of the periodical payment 
@@ -82,16 +72,17 @@ public class LoanCalc {
 
         while ((H - L) > epsilon) {
             iterationCounter++;
-            double mid = (L + H) / 2; 
-            double balance = endBalance(loan, rate, n, mid);
-        
-            if (balance > 0) {
-                L = mid;  
+            double g = (L + H) / 2;  
+            double balanceAtG = endBalance(loan, rate, n, g);
+            double balanceAtL = endBalance(loan, rate, n, L);
+            
+            if (balanceAtG * balanceAtL > 0) {
+                L = g;  
             } else {
-                H = mid;  
+                H = g; 
             }
         }
-        
-        return (L + H) / 2;  // Return the midpoint as the solution
+
+        return (L + H) / 2; 
     }
 }
