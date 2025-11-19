@@ -1,3 +1,6 @@
+import java.util.Arrays;
+import java.util.Random;
+
 /** Functions for checking if a given string is an anagram. */
 public class Anagram {
 	public static void main(String args[]) {
@@ -29,7 +32,23 @@ public class Anagram {
 	// Returns true if the two given strings are anagrams, false otherwise.
 	public static boolean isAnagram(String str1, String str2) {
 		// Replace the following statement with your code
-		return false;
+		String cleanStr1 = preProcess(str1);
+		String cleanStr2 = preProcess(str2);
+
+		cleanStr1 = cleanStr1.replace(" ", "");
+    	cleanStr2 = cleanStr2.replace(" ", "");
+
+		if (cleanStr1.length() != cleanStr2.length()) {
+        	return false;
+    	}
+
+		char[] arr1 = cleanStr1.toCharArray();
+    	char[] arr2 = cleanStr2.toCharArray();
+
+		Arrays.sort(arr1);
+    	Arrays.sort(arr2);
+
+   	 	return Arrays.equals(arr1, arr2);
 	}
 	   
 	// Returns a preprocessed version of the given string: all the letter characters are converted
@@ -37,13 +56,38 @@ public class Anagram {
 	// as is. For example, the string "What? No way!" becomes "whatnoway"
 	public static String preProcess(String str) {
 		// Replace the following statement with your code
-		return "";
-	} 
-	   
+		String result = "";
+		str = str.toLowerCase();
+
+		for (int i = 0; i < str.length(); i++) {
+			char c = str.charAt(i);
+
+			if (c >= 'a' && c <= 'z') {
+				result = result + c;
+			}else if (c == ' ') {
+				result = result + c;
+			}
+		} 
+	 	return result;
+	}
+
 	// Returns a random anagram of the given string. The random anagram consists of the same
 	// characters as the given string, re-arranged in a random order. 
-	public static String randomAnagram(String str) {
-		// Replace the following statement with your code
-		return "";
-	}
+	public static String randomAnagram(String input) {
+		StringBuilder remaining = new StringBuilder(input);
+		StringBuilder result = new StringBuilder();
+		Random rand = new Random();
+
+		while (remaining.length() > 0) {
+			// Pick a random index
+			int index = rand.nextInt(remaining.length());
+			// Append the character at that index to result
+			result.append(remaining.charAt(index));
+			// Remove the character from remaining
+			remaining.deleteCharAt(index);
+		}
+
+		return result.toString();
+	}	
+
 }
