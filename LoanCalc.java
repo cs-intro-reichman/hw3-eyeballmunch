@@ -47,7 +47,9 @@ public class LoanCalc {
 	// Side effect: modifies the class variable iterationCounter.
     public static double bruteForceSolver(double loan, double rate, int n, double epsilon) {
 		// Replace the following statement with your code
-		double payment = loan / n;  
+
+		/* 
+		  double payment = loan / n;  
 		iterationCounter = 0;
 
 		while (true) {
@@ -61,7 +63,10 @@ public class LoanCalc {
 			payment += epsilon;
 		}
 		return payment;
+		  
+		*/
 		
+		return 0;
     }
     
     // Uses bisection search to compute an approximation of the periodical payment 
